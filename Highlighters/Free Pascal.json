@@ -1,4 +1,10 @@
 {
+  "Info": {
+    "Name": "Free Pascal",
+    "FileExtensions": [
+      ".pp"
+    ]
+  },
   "Highlighter": {
     "Sample": [
       "// Hello World in Pascal\r\n",
@@ -532,7 +538,6 @@
             "CloseToken": "$ENDREGION",
             "Properties": {
               "OpenTokenEnd": "}",
-              "ShowGuideLine": false,
               "BeginWithBreakChar": true
             }
           }

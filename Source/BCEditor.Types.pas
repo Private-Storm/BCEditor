@@ -4,90 +4,24 @@ interface {********************************************************************}
 
 uses
   SysUtils, Types,
-  Graphics, Controls,
-  BCEditor.Consts;
+  Graphics, Controls;
 
 type
   TBCEditorArrayOfString = array of string;
-  TBCEditorArrayOfSingle = array of Single;
 
-  TBCEditorInterruptFunc = function(): Boolean of object;
-
-  TBCEditorCaretChangedEvent = procedure(ASender: TObject; ACaretPos: TPoint) of object;
-
-  TBCEditorMarksPanelClick = procedure(ASender: TObject; const ALine: Integer) of object;
-  TBCEditorHintEvent = procedure(ASender: TObject; const AX, AY: Integer; const APos: TPoint; const AIndex: Integer; var AHint: string) of object;
-
-  TBCEditorReplaceAction = (raCancel, raSkip, raReplace, raReplaceAll);
-
-  TBCEditorOption = (
-    eoAutoIndent, { Will indent the caret on new lines with the same amount of leading white space as the preceding line }
-    eoBeyondEndOfFile, { Allows the cursor to go beyond the end of file into the white space }
-    eoBeyondEndOfLine, { Allows the cursor to go beyond the last character into the white space }
-    eoAcceptFiles, { Allows the editor accept OLE file drops }
-    eoMiddleClickScrolling, { Scrolling by mouse move after wheel click. }
-    eoTrimTrailingLines, { Empty lines at the end of text will be removed while saving }
-    eoTrimTrailingSpaces { Spaces at the end of lines will be removed while saving }
-  );
-  TBCEditorOptions = set of TBCEditorOption;
-
-  TBCEditorTextEntryMode = (temInsert, temOverwrite);
-
-  TBCEditorTabOption = (
-    toPreviousLineIndent,
-    toSelectedBlockIndent,
-    toTabsToSpaces
+  TBCEditorBreakType = (
+    btUnspecified,
+    btAny,
+    btTerm
   );
 
-  TBCEditorSelectionOption = (
-    soExpandRealNumbers,
-    soTermsCaseSensitive,
-    soToEndOfLine,
-    soTripleClickLineSelect
+  TBCEditorCodeFoldingOption = (
+    cfoFoldMultilineComments,
+    cfoHighlightFoldingLine,
+    cfoHighlightIndentGuides,
+    cfoShowTreeLine
   );
-
-  TBCEditorSearchEvent = (
-    seInvalidate,
-    seChange
-  );
-
-  TBCEditorReplaceChanges = (
-    rcEngineUpdate
-  );
-
-  TBCEditorSearchOption = (
-    soBackwards,
-    soCaseSensitive,
-    soEntireScope,
-    soHighlightResults,
-    soSearchOnTyping,
-    soWholeWordsOnly,
-    soWrapAround
-  );
-  TBCEditorSyncEditOption = (
-    seoButton,
-    seoCaseSensitive
-  );
-  TBCEditorSyncEditOptions = set of TBCEditorSyncEditOption;
-
-  TBCEditorReplaceOption = (
-    roBackwards,
-    roCaseSensitive,
-    roEntireScope,
-    roPrompt,
-    roReplaceAll,
-    roSelectedOnly,
-    roWholeWordsOnly
-  );
-
-  TBCEditorSearchEngine = (
-    seNormal,
-    seRegularExpression
-  );
-
-  TBCEditorSearchMapOption = (
-    moShowActiveLine
-  );
+  TBCEditorCodeFoldingOptions = set of TBCEditorCodeFoldingOption;
 
   TBCEditorCompletionProposalOption = (
     cpoAutoInvoke,
@@ -95,19 +29,112 @@ type
     cpoAddHighlighterKeywords,
     cpoCaseSensitive,
     cpoFiltered,
-    cpoParseItemsFromText,
     cpoResizeable,
-    cpoShowShadow,
     cpoUseHighlighterColumnFont
   );
+  TBCEditorCompletionProposalOptions = set of TBCEditorCompletionProposalOption;
+
+  TBCEditorOption = (
+    eoAutoIndent, { Will indent the caret on new lines with the same amount of leading white space as the preceding line }
+    eoBeyondEndOfFile, { Allows the cursor to go beyond the end of file into the white space }
+    eoBeyondEndOfLine, { Allows the cursor to go beyond the last character into the white space }
+    eoDropFiles, { Allows the editor accept OLE file drops }
+    eoHighlightActiveLine, { Highlights the background of the line with the caret }
+    eoHighlightAllFoundTexts, { Highlight all found texts }
+    eoHighlightMatchingPairs, { Highlights the background two matching pairs like quoters or brackets }
+    eoMiddleClickScrolling, { Scrolling by mouse move after wheel click. }
+    eoSpecialChars, { Shows special chars (#0, space, tab and line break) }
+    eoTrimEndOfFile, { Empty lines at the end of text will be removed automatically }
+    eoTrimEndOfLine { Spaces at the end of lines will be removed automatically }
+  );
+  TBCEditorOptions = set of TBCEditorOption;
+
+  TBCEditorFindOption = (
+    foBackwards,
+    foCaseSensitive,
+    foEntireScope,
+    foRegExpr,
+    foSelection,
+    foWholeWordsOnly,
+    foWrapAround
+  );
+  TBCEditorFindOptions = set of TBCEditorFindOption;
+
+  TBCEditorKeyCharType = (ctFoldOpen, ctFoldClose, ctSkipOpen, ctSkipClose);
+
+  TBCEditorSortOrder = (soAsc, soDesc);
+
+  TBCEditorLeftMarginLineNumberOption = (
+    lnoIntens,
+    lnoAfterLastLine
+  );
+  TBCEditorLeftMarginLineNumberOptions = set of TBCEditorLeftMarginLineNumberOption;
 
   TBCEditorLeftMarginBookMarkPanelOption = (
     bpoToggleBookmarkByClick,
     bpoToggleMarkByClick
   );
+  TBCEditorLeftMarginBookMarkPanelOptions = set of TBCEditorLeftMarginBookMarkPanelOption;
 
-  PBCEditorLinesPosition = ^TBCEditorLinesPosition;
-  TBCEditorLinesPosition = packed record
+  TBCEditorRangeItemType = (ritUnspecified, ritMultiLineString, ritSingleLineString, ritMultiLineComment, ritSingleLineComment);
+
+  TBCEditorRangeType = (
+    ttUnspecified,
+    ttAddress,
+    ttAssemblerComment,
+    ttAssemblerReservedWord,
+    ttAttribute,
+    ttBlockComment,
+    ttCharacter,
+    ttDirective,
+    ttHexNumber,
+    ttHighlightedBlock,
+    ttHighlightedBlockSymbol,
+    ttLineComment,
+    ttMethod,
+    ttMethodName,
+    ttNumber,
+    ttReservedWord,
+    ttString,
+    ttSymbol
+  );
+
+  TBCEditorReplaceAction = (raCancel, raSkip, raReplace, raReplaceAll);
+
+  TBCEditorReplaceOption = (
+    roBackwards,
+    roCaseSensitive,
+    roEntireScope,
+    roPrompt,
+    roRegExpr,
+    roReplaceAll,
+    roSelection,
+    roWholeWordsOnly,
+    roWrapAround
+  );
+  TBCEditorReplaceOptions = set of TBCEditorReplaceOption;
+
+  TBCEditorSelectionOption = (
+    soDoubleClickRealNumbers, { Double-click selects whole real numbers }
+    soHighlightWholeLine, { select whole lines instead of the cursor selected character }
+    soTripleClickLineSelect { triple click selects the whole line }
+  );
+  TBCEditorSelectionOptions = set of TBCEditorSelectionOption;
+
+  TBCEditorSyncEditOption = (
+    seoShowButton, { Show SyncEdit button on the left side of the editor if SyncEdit is available }
+    seoCaseSensitive { SyncEdit works with case sensitive words detection }
+  );
+  TBCEditorSyncEditOptions = set of TBCEditorSyncEditOption;
+
+  TBCEditorUndoOption = (
+    uoGroupUndo,
+    uoUndoAfterLoad,
+    uoUndoAfterSave
+  );
+  TBCEditorUndoOptions = set of TBCEditorUndoOption;
+
+  TBCEditorLinesPosition = record
     Char: Integer;
     Line: Integer;
     class operator Equal(a, b: TBCEditorLinesPosition): Boolean; inline;
@@ -134,7 +161,7 @@ type
     procedure Union(const a: TBCEditorLinesArea); overload;
   end;
 
-  TBCEditorRowsPosition = packed record
+  TBCEditorRowsPosition = record
     Column: Integer;
     Row: Integer;
     class operator Equal(a, b: TBCEditorRowsPosition): Boolean; inline;
@@ -142,82 +169,14 @@ type
     function ToString(): string; inline;
   end;
 
-  TBCEditorBreakType = (
-    btUnspecified,
-    btAny,
-    btTerm
-  );
-  TBCEditorRangeType = (
-    ttUnspecified,
-    ttAddress,
-    ttAssemblerComment,
-    ttAssemblerReservedWord,
-    ttAttribute,
-    ttBlockComment,
-    ttCharacter,
-    ttDirective,
-    ttHexNumber,
-    ttHighlightedBlock,
-    ttHighlightedBlockSymbol,
-    ttLineComment,
-    ttMethod,
-    ttMethodName,
-    ttNumber,
-    ttReservedWord,
-    ttString,
-    ttSymbol
-  );
-
-
-  TBCEditorKeyPressWEvent = procedure(ASender: TObject; var AKey: Char) of object;
-
+  TBCEditorCaretChangedEvent = procedure(ASender: TObject; ACaretPos: TPoint) of object;
   TBCEditorContextHelpEvent = procedure(ASender: TObject; AWord: string) of object;
-
+  TBCEditorFindExecutedEvent = procedure(ASender: TObject; const AErrorMessage: string) of object;
+  TBCEditorFindWrapAroundEvent = function(ASender: TObject; const APattern: string; const ABackwards: Boolean): Boolean of object;
+  TBCEditorHintEvent = procedure(ASender: TObject; const AX, AY: Integer; const APos: TPoint; const ACharIndex: Integer; var AHint: string) of object;
+  TBCEditorMarksPanelClick = procedure(ASender: TObject; const ALine: Integer) of object;
   TBCEditorMouseCursorEvent = procedure(ASender: TObject; const ALineCharPos: TBCEditorLinesPosition; var ACursor: TCursor) of object;
-
-  TBCEditorTabConvertProc = function(const ALine: string; ATabWidth: Integer; var AHasTabs: Boolean;
-    const ATabChar: Char = BCEDITOR_SPACE_CHAR): string;
-
-  TBCEditorLeftMarginLineNumberOption = (
-    lnoIntens,
-    lnoAfterLastLine
-  );
-
-  TBCEditorSearchMapAlign = (saLeft, saRight);
-
-  TBCEditorUndoOption = (
-    uoGroupUndo,
-    uoUndoAfterLoad,
-    uoUndoAfterSave
-  );
-
-  TBCEditorCase = (cNone = -1, cUpper = 0, cLower = 1, cOriginal = 2);
-
-  TBCEditorKeyCharType = (ctFoldOpen, ctFoldClose, ctSkipOpen, ctSkipClose);
-
-  TBCEditorSortOrder = (soAsc, soDesc);
-
-  TBCEditorCodeFoldingChanges = (fcEnabled, fcRefresh, fcRescan);
-
-  TBCEditorCodeFoldingOption = (
-    cfoFoldMultilineComments,
-    cfoHighlightFoldingLine,
-    cfoHighlightIndentGuides,
-    cfoShowTreeLine
-  );
-
-  TBCEditorCodeFoldingOptions = set of TBCEditorCodeFoldingOption;
-  TBCEditorCompletionProposalOptions = set of TBCEditorCompletionProposalOption;
-  TBCEditorLeftMarginLineNumberOptions = set of TBCEditorLeftMarginLineNumberOption;
-  TBCEditorSearchOptions = set of TBCEditorSearchOption;
-  TBCEditorSearchMapOptions = set of TBCEditorSearchMapOption;
-  TBCEditorLeftMarginBookMarkPanelOptions = set of TBCEditorLeftMarginBookMarkPanelOption;
-  TBCEditorReplaceOptions = set of TBCEditorReplaceOption;
-  TBCEditorSelectionOptions = set of TBCEditorSelectionOption;
-  TBCEditorTabOptions = set of TBCEditorTabOption;
-  TBCEditorUndoOptions = set of TBCEditorUndoOption;
-
-  TBCEditorRangeItemType = (ritUnspecified, ritMultiLineString, ritSingleLineString, ritMultiLineComment, ritSingleLineComment);
+  TBCEditorReplacePromptEvent = procedure(ASender: TObject; const AArea: TBCEditorLinesArea; const ABackwards: Boolean; const AReplaceText: string; var AAction: TBCEditorReplaceAction) of object;
 
 function Max(const A, B: TBCEditorLinesPosition): TBCEditorLinesPosition; overload; inline;
 function Min(const A, B: TBCEditorLinesPosition): TBCEditorLinesPosition; overload; inline;

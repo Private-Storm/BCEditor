@@ -122,86 +122,41 @@
         <PackageImport Include="vcldb.bpi">
             <BuildOrder>44</BuildOrder>
         </PackageImport>
-        <DelphiCompile Include="..\Source\BCEditor.Consts.pas">
-            <BuildOrder>2</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.ActiveLine.pas">
-            <BuildOrder>3</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.CodeFolding.pas">
-            <BuildOrder>7</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.CompletionProposal.pas">
-            <BuildOrder>8</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.CompletionProposal.PopupWindow.pas">
-            <BuildOrder>9</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.KeyCommands.pas">
-            <BuildOrder>12</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.LeftMargin.pas">
-            <BuildOrder>13</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.MatchingPair.pas">
-            <BuildOrder>15</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.pas">
+        <DelphiCompile Include="..\Source\BCEditor.pas">
             <BuildOrder>17</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.Replace.pas">
-            <BuildOrder>19</BuildOrder>
+        <DelphiCompile Include="..\Source\BCEditor.Commands.pas">
+            <BuildOrder>12</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.Search.pas">
-            <BuildOrder>22</BuildOrder>
+        <DelphiCompile Include="..\Source\BCEditor.CompletionProposal.pas">
+            <BuildOrder>2</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.Selection.pas">
-            <BuildOrder>23</BuildOrder>
+        <DelphiCompile Include="..\Source\BCEditor.Consts.pas">
+            <BuildOrder>9</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.SpecialChars.pas">
-            <BuildOrder>24</BuildOrder>
+        <DelphiCompile Include="..\Source\BCEditor.Commands.pas">
+            <BuildOrder>12</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.SyncEdit.pas">
-            <BuildOrder>25</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Editor.Tabs.pas">
-            <BuildOrder>26</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Export.HTML.pas">
+        <DelphiCompile Include="..\Source\BCEditor.ExportHTML.pas">
             <BuildOrder>30</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Highlighter.pas">
+        <DelphiCompile Include="..\Source\BCEditor.GotoLine.pas">
             <BuildOrder>31</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.KeyboardHandler.pas">
+        <DelphiCompile Include="..\Source\BCEditor.Highlighter.pas">
             <BuildOrder>32</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Language.pas">
-            <BuildOrder>33</BuildOrder>
         </DelphiCompile>
         <DelphiCompile Include="..\Source\BCEditor.Lines.pas">
             <BuildOrder>34</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.MacroRecorder.pas">
-            <BuildOrder>35</BuildOrder>
+        <DelphiCompile Include="..\Source\BCEditor.Locale.pas">
+            <BuildOrder>33</BuildOrder>
         </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.PaintHelper.pas">
-            <BuildOrder>36</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Print.pas">
-            <BuildOrder>37</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Print.Preview.pas">
-            <BuildOrder>38</BuildOrder>
+        <DelphiCompile Include="..\Source\BCEditor.Properties.pas">
+            <BuildOrder>39</BuildOrder>
         </DelphiCompile>
         <DelphiCompile Include="..\Source\BCEditor.Types.pas">
             <BuildOrder>40</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\BCEditor.Utils.pas">
-            <BuildOrder>41</BuildOrder>
-        </DelphiCompile>
-        <DelphiCompile Include="..\Source\JsonDataObjects.pas">
-            <BuildOrder>42</BuildOrder>
         </DelphiCompile>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

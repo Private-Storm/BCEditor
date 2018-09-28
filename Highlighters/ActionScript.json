@@ -1,4 +1,12 @@
-{
+﻿{
+  "Info": {
+    "Name": "ActionScript",
+    "FirstLinePattern": "^( |\t)*{",
+    "DefaultFileExtension": ".as",
+    "FileExtensions": [
+      ".as"
+    ]
+  },
   "Highlighter": {
     "Sample": [
       "// Hello World in ActionScript 3\r\n",

@@ -1,4 +1,10 @@
-{
+﻿{
+  "Info": {
+    "Name": "Lisp",
+    "FileExtensions": [
+      ".lisp"
+    ]
+  },
   "Highlighter": {
     "Sample": [
       "// Hello World in Lisp\r\n",

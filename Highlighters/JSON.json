@@ -1,4 +1,10 @@
 {
+  "Info": {
+    "Name": "JSON",
+    "FileExtensions": [
+      ".json"
+    ]
+  },
   "Highlighter": {
     "Sample": [
       "{\r\n",
@@ -291,6 +297,10 @@
       {
         "OpenToken": "{",
         "CloseToken": "}"
+      },
+      {
+        "OpenToken": "\"",
+        "CloseToken": "\""
       }
     ]
   },

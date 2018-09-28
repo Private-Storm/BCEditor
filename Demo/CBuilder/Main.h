@@ -9,13 +9,13 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "BCEditor.Editor.hpp"
+#include "BCEditor.hpp"
 #include "BCEditor.Highlighter.hpp"
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
 __published:	// IDE-managed Components
-	TBCEditor *Editor;
+	TBCEditor *BCEditor;
     TListBox *ListBoxColors;
 	TListBox *ListBoxHighlighters;
 	TPanel *PanelLeft;

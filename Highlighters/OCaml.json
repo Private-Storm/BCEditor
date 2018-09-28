@@ -1,4 +1,10 @@
-{
+﻿{
+  "Info": {
+    "Name": "OCaml",
+    "FileExtensions": [
+      ".ml"
+    ]
+  },
   "Highlighter": {
     "Sample": [
       "(* Hello World in OCaml *)\r\n",

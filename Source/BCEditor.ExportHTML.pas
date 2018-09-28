@@ -1,6 +1,6 @@
-unit BCEditor.Export.HTML;
+unit BCEditor.ExportHTML;
 
-interface
+interface {********************************************************************}
 
 uses
   Classes, SysUtils,
@@ -31,12 +31,14 @@ type
     procedure SaveToStream(AStream: TStream; AEncoding: System.SysUtils.TEncoding);
   end;
 
-implementation
+implementation {***************************************************************}
 
 uses
   Windows,
   UITypes, StrUtils,
-  BCEditor.Consts, BCEditor.Utils;
+  BCEditor.Consts;
+
+{ TBCEditorExportHTML *********************************************************}
 
 constructor TBCEditorExportHTML.Create(ALines: BCEditor.Lines.TBCEditorLines;
   AHighlighter: TBCEditorHighlighter; AFont: TFont; const ATabWidth: Integer;
@@ -103,9 +105,8 @@ procedure TBCEditorExportHTML.CreateInternalCSS;
   end;
 
 var
-  LElement: TBCEditorHighlighter.PElement;
+  LElement: TBCEditorHighlighter.TElement;
   LIndex: Integer;
-  LStyles: TList;
 begin
   FStringList.Add('  <style>');
 
@@ -114,25 +115,24 @@ begin
   FStringList.Add('      font-size: ' + IntToStr(FFont.Size) + 'px;');
   FStringList.Add('    }');
 
-  LStyles := FHighlighter.Colors.Styles;
-  for LIndex := 0 to LStyles.Count - 1 do
+  for LIndex := 0 to FHighlighter.Colors.Count - 1 do
   begin
-    LElement := LStyles.Items[LIndex];
+    LElement := FHighlighter.Colors.Items[LIndex];
 
-    FStringList.Add('    .' + LElement^.Name + ' { ');
-    FStringList.Add('      color: #' + ColorToHex(LElement^.Foreground) + ';');
-    FStringList.Add('      background-color: #' + ColorToHex(LElement^.Background) + ';');
+    FStringList.Add('    .' + LElement.Name + ' { ');
+    FStringList.Add('      color: #' + ColorToHex(LElement.Foreground) + ';');
+    FStringList.Add('      background-color: #' + ColorToHex(LElement.Background) + ';');
 
-    if TFontStyle.fsBold in LElement^.FontStyles then
+    if TFontStyle.fsBold in LElement.Style then
       FStringList.Add('      font-weight: bold;');
 
-    if TFontStyle.fsItalic in LElement^.FontStyles then
+    if TFontStyle.fsItalic in LElement.Style then
       FStringList.Add('      font-style: italic;');
 
-    if TFontStyle.fsUnderline in LElement^.FontStyles then
+    if TFontStyle.fsUnderline in LElement.Style then
       FStringList.Add('      text-decoration: underline;');
 
-    if TFontStyle.fsStrikeOut in LElement^.FontStyles then
+    if TFontStyle.fsStrikeOut in LElement.Style then
       FStringList.Add('      text-decoration: line-through;');
 
     FStringList.Add('    }');
@@ -158,6 +158,7 @@ begin
     if (FHighlighter.FindFirstToken(FLines.Items[LLine].BeginRange,
       PChar(FLines.Items[LLine].Text), Length(FLines.Items[LLine].Text), 0,
       LToken)) then
+    begin
       repeat
         SetString(LTokenText, LToken.Text, LToken.Length);
         if LTokenText = BCEDITOR_TAB_CHAR then
@@ -197,6 +198,8 @@ begin
         else
           LTextLine := LTextLine + LTokenText;
       until (not FHighlighter.FindNextToken(LToken));
+      FHighlighter.FindClose(LToken);
+    end;
     FStringList.Add(LTextLine + '<br>');
   end;
   if LPreviousElement <> '' then

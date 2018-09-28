@@ -1,4 +1,13 @@
 {
+  "Info": {
+    "Name": "Pascal",
+    "DefaultFileExtension": ".pas",
+    "FileExtensions": [
+      ".pas",
+      ".dpr",
+      ".dpk"
+    ]
+  },
   "Highlighter": {
     "Sample": [
       "// Hello World in Pascal\r\n",
@@ -647,8 +656,7 @@
             "CloseToken": "IMPLEMENTATION",
             "Properties": {
               "OpenTokenBeginningOfLine": true,
-              "TokenEndIsPreviousLine": true,
-              "ShowGuideLine": false
+              "TokenEndIsPreviousLine": true
             }
           },
           {
@@ -667,8 +675,7 @@
             "Properties": {
               "OpenTokenBeginningOfLine": true,
               "OpenIsClose": true,
-              "SharedClose": true,
-              "ShowGuideLine": false
+              "SharedClose": true
             }
           },
           {
@@ -692,7 +699,6 @@
             "CloseToken": "$ENDREGION",
             "Properties": {
               "OpenTokenEnd": "}",
-              "ShowGuideLine": false,
               "BeginWithBreakChar": true
             }
           }

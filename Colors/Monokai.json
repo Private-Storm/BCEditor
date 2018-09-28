@@ -1,27 +1,11 @@
 {
   "Colors": {
-    "Info": {
-      "General": {
-        "Version": "2.0.0",
-        "Date": "05.01.2017"
-      },
-      "Author": {
-        "Name": "Lasse Rautiainen",
-        "Mail": "lasse@bonecode.com"
-      }
-    },
     "Editor": {
       "Colors": {
         "Background": "$00222827",
         "ActiveLineBackground": "$00222827",
         "CodeFoldingBackground": "$00222827",
         "CodeFoldingFoldingLine": "$009F9F9F",
-        "CodeFoldingIndent": "$00414746",
-        "CodeFoldingIndentHighlight": "$00414746",
-        "CompletionProposalBackground": "$00222827",
-        "CompletionProposalForeground": "$00F8F8F2",
-        "CompletionProposalSelectedBackground": "$003E4849",
-        "CompletionProposalSelectedText": "clHighlightText",
         "LeftMarginBackground": "$00222827",
         "LeftMarginLineNumbers": "$009F9F9F",
         "LeftMarginLineStateModified": "$0074DBE6",
@@ -29,15 +13,12 @@
         "LeftMarginBookmarkPanel": "$00222827",
         "MatchingPairMatched": "$007226F9",
         "SearchHighlighterBackground": "$003E4849",
-        "SearchHighlighterBorder": "clNone",
         "SearchHighlighterForeground": "clNone",
-        "SearchInSelectionBackground": "$00808080",
         "SelectionBackground": "$003E4849",
         "SelectionForeground": "clNone",
         "SpecialCharForeground": "clGrayText",
         "SyncEditBackground": "$00808080",
-        "SyncEditEditBorder": "$00F8F8F2",
-        "SyncEditWordBorder": "$003E4849",
+        "SyncEditWordBorder": "$003E4849"
       },
       "Fonts": {
         "Text": "Consolas",

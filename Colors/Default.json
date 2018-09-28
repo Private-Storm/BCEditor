@@ -1,27 +1,17 @@
 {
   "Colors": {
-    "Info": {
-      "General": {
-        "Version": "2.0.0",
-        "Date": "05.01.2017"
-      },
-      "Author": {
-        "Name": "Lasse Rautiainen",
-        "Mail": "lasse@bonecode.com"
-      }
-    },
     "Editor": {
       "Colors": {
         "Background": "clWindow",
         "ActiveLineBackground": "$00E6FAFF",
+        "BookmarkBorder": "$00027397",
+        "BookmarkCover": "$00B2E6FA",
+        "BookmarkNumber": "$00027397",
+        "BookmarkRingLeft": "$00929292",
+        "BookmarkRingMiddle": "$00FCFCFC",
+        "BookmarkRingRight": "$00BCBCBC",
         "CodeFoldingBackground": "$00F4F4F4",
         "CodeFoldingFoldingLine": "$00CC9999",
-        "CodeFoldingIndent": "$00CC9999",
-        "CodeFoldingIndentHighlight": "$00CC9999",
-        "CompletionProposalBackground": "clWindow",
-        "CompletionProposalForeground": "clBlack",
-        "CompletionProposalSelectedBackground": "clHighlight",
-        "CompletionProposalSelectedText": "clHighlightText",
         "LeftMarginBackground": "$00F4F4F4",
         "LeftMarginLineNumbers": "$00CC9999",
         "LeftMarginLineStateModified": "clYellow",
@@ -29,15 +19,15 @@
         "LeftMarginBookmarkPanel": "clBtnFace",
         "MatchingPairMatched": "clAqua",
         "SearchHighlighterBackground": "$0078AAFF",
-        "SearchHighlighterBorder": "clNone",
         "SearchHighlighterForeground": "clBlack",
-        "SearchInSelectionBackground": "$00FAFFE6",
         "SelectionBackground": "$00A56D53",
         "SelectionForeground": "clWindow",
         "SpecialCharForeground": "clGrayText",
         "SyncEditBackground": "$00FAFFE6",
-        "SyncEditEditBorder": "clBlack",
-        "SyncEditWordBorder": "$00A56D53",
+        "SyncEditButtonBackground": "clWindow",
+        "SyncEditButtonPen": "$00B3783E",
+        "SyncEditButtonText": "clWindowText",
+        "SyncEditWordBorder": "$00A56D53"
       },
       "Fonts": {
         "Text": "Courier New",

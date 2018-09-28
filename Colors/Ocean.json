@@ -1,27 +1,11 @@
 {
   "Colors": {
-    "Info": {
-      "General": {
-        "Version": "2.0.0",
-        "Date": "05.01.2017"
-      },
-      "Author": {
-        "Name": "Lasse Rautiainen",
-        "Mail": "lasse@bonecode.com"
-      }
-    },
     "Editor": {
       "Colors": {
         "Background": "clAqua",
         "ActiveLineBackground": "$00CCFFCC",
         "CodeFoldingBackground": "clAqua",
         "CodeFoldingFoldingLine": "clTeal",
-        "CodeFoldingIndent": "clTeal",
-        "CodeFoldingIndentHighlight": "clTeal",
-        "CompletionProposalBackground": "clAqua",
-        "CompletionProposalForeground": "clBlack",
-        "CompletionProposalSelectedBackground": "clBlue",
-        "CompletionProposalSelectedText": "clAqua",
         "LeftMarginBackground": "clAqua",
         "LeftMarginLineNumbers": "clTeal",
         "LeftMarginLineStateModified": "clYellow",
@@ -29,15 +13,12 @@
         "LeftMarginBookmarkPanel": "clAqua",
         "MatchingPairMatched": "clWhite",
         "SearchHighlighterBackground": "$00FCFDCD",
-        "SearchHighlighterBorder": "clNone",
         "SearchHighlighterForeground": "clBlack",
-        "SearchInSelectionBackground": "$00FCFDCD",
         "SelectionBackground": "clBlue",
         "SelectionForeground": "clAqua",
         "SpecialCharForeground": "clGrayText",
         "SyncEditBackground": "$00FCFDCD",
-        "SyncEditEditBorder": "clBlack",
-        "SyncEditWordBorder": "clBlue",
+        "SyncEditWordBorder": "clBlue"
       },
       "Fonts": {
         "Text": "Courier New",
